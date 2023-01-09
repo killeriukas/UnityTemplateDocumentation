@@ -57,7 +57,7 @@
     "globalMetadataFiles": [],
     "fileMetadataFiles": [],
     "template": [
-      "default",
+      "statictoc",
 	  "templates/tmi"
     ],
     "postProcessors": [],
