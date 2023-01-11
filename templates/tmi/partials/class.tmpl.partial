@@ -1,8 +1,9 @@
 {{!Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See LICENSE file in the project root for full license information.}}
 
 {{>partials/class.header}}
+<h2>Own Members</h2>
 {{#children}}
-<h2 id="{{id}}">{{>partials/classSubtitle}}</h2>
+<h3 id="{{id}}">{{>partials/classSubtitle}}</h3>
 
 {{#children.0}}
 <table class="table table-bordered table-condensed table-striped table-hover">
@@ -25,7 +26,33 @@
 </table>
 {{/children.0}}
 {{/children}}
+<h2>Inherited Members</h2>
+
+<h3">TEST METHOD/PROPERTY NAME</h3>
+
+{{#inheritedMembers.0}}
+<table class="table table-bordered table-condensed table-striped table-hover">
+  <thead>
+    <tr>
+      <th class="col-md-2">{{__global.name}}</th>
+      <th>{{__global.description}}</th>
+    </tr>
+  </thead>
+    <tbody>
+{{/inheritedMembers.0}}
+{{#inheritedMembers}}
+      <tr>
+        <td class="col-md-2">{{{name.0.value}}}</td>
+        <td>{{{description}}}</td>
+      </tr>
+{{/inheritedMembers}}
+{{#inheritedMembers.0}}
+  </tbody>
+</table>
+{{/inheritedMembers.0}}
+
 <p><strong>NOT FIXED BELOW!!!!!!!!!!!!</strong></p>
+
 {{#children}}
 
 {{#children}}
