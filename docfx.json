@@ -58,7 +58,7 @@
     "fileMetadataFiles": [],
     "template": [
       "statictoc",
-	  "templates/tmi"
+	  "templates/memberpage.2.59.4"
     ],
     "postProcessors": [],
     "markdownEngineName": "markdig",
