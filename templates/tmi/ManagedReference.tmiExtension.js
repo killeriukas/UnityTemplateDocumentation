@@ -1,6 +1,11 @@
 // Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 exports.lastTransform = function (model) {
+
+  if (model.isCollection) {
+    return model;
+  }
+
   if (model.children) {
 
     for (let i = 0; i < model.children.length; i++) {
