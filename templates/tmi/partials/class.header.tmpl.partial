@@ -2,12 +2,10 @@
 for full license information.}}
 <div>
   <h1 id="{{id}}" data-uid="{{uid}}" class="text-break">{{>partials/title}}</h1>
-  <p>{{>partials/title}} in {{namespace.name.0.value}}</p>
-  <div class="codewrapper">
-    <pre><code class="lang-{{_lang}} hljs">{{syntax.content.0.value}}</code></pre>
-  </div>
-  {{#inClass}}
-  {{/inClass}}
+  <p>class in {{namespace.name.0.value}} 
+    {{#inheritance.0}} / Inherits from: {{#inheritance}}{{{specName.0.value}}}, {{/inheritance}}{{/inheritance.0}}
+    {{#implements.0}} / Implements: {{#implements}}{{{specName.0.value}}}, {{/implements}}{{/implements.0}}
+  </p>
 </div>
 <div class="markdown level0 summary">
   <h2>Description</h2>
@@ -22,43 +20,9 @@ for full license information.}}
   {{#conceptual}}
   {{{conceptual}}}
   {{/conceptual}}
-  {{^conceptual}}
-  <strong>[WARNING] Conceptual markdown or whatever this is is empty.</strong>
-  {{/conceptual}}
-</div>
-<div>
-<p><strong>FINISHES TOUCH UPS. DOWN FROM HERE NOTHING HAS CHANGED</strong></p>
 </div>
 
 
-
-{{#implements.0}}
-<div class="implements">
-  <h5>{{__global.implements}}</h5>
-  {{/implements.0}}
-  {{#implements}}
-  <div>{{{specName.0.value}}}</div>
-  {{/implements}}
-  {{#implements.0}}
-</div>
-{{/implements.0}}
-{{#inheritedMembers.0}}
-<div class="inheritedMembers">
-  <h5>{{__global.inheritedMembers}}</h5>
-  {{/inheritedMembers.0}}
-  {{#inheritedMembers}}
-  <div>
-    {{#definition}}
-    <xref uid="{{definition}}" text="{{nameWithType.0.value}}" alt="{{fullName.0.value}}" />
-    {{/definition}}
-    {{^definition}}
-    <xref uid="{{uid}}" text="{{nameWithType.0.value}}" alt="{{fullName.0.value}}" />
-    {{/definition}}
-  </div>
-  {{/inheritedMembers}}
-  {{#inheritedMembers.0}}
-</div>
-{{/inheritedMembers.0}}
 {{#syntax.parameters.0}}
 <h5 class="parameters">{{__global.parameters}}</h5>
 <table class="table table-bordered table-striped table-condensed">
