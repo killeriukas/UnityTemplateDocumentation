@@ -1,6 +1,10 @@
 {{!Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See LICENSE file in the project root for full license information.}}
 
 {{>partials/class.header}}
+{{#children.0}}
+<h2>Members</h2>
+{{/children.0}}
+
 {{#children}}
 {{#overload}}
 <a id="{{id}}" data-uid="{{uid}}"></a>
@@ -29,6 +33,48 @@
 </table>
 {{/children.0}}
 {{/children}}
+
+{{#inheritedMembers.0}}
+<h2>Inherited Members</h2>
+{{/inheritedMembers.0}}
+
+{{#inheritedMembers}}
+<h3 id="{{id}}">{{>partials/classSubtitle}}</h3>
+
+{{#children.0}}
+<table class="table table-bordered table-striped table-condensed">
+  <thead>
+    <tr>
+      <th>{{__global.name}}</th>
+      <th>{{__global.description}}</th>
+    </tr>
+  </thead>
+  <tbody>
+  {{/children.0}}
+    {{#children}}
+    <tr>
+      <td id="{{id}}" data-uid="{{uid}}">
+        <xref uid="{{uid}}" altProperty="fullName" displayProperty="name" text="{{name.0.value}}"/>
+      </td>
+      <td class="markdown level1 summary">{{{summary}}}</td>
+    </tr>
+    {{/children}}    
+  {{#children.0}}
+  </tbody>
+</table>
+{{/children.0}}
+
+
+{{/inheritedMembers}}
+
+
+
+
+
+
+
+
+
 {{#extensionMethods.0}}
 <h3 id="extensionmethods">{{__global.extensionMethods}}</h3>
 {{/extensionMethods.0}}

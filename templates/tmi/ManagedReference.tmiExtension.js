@@ -1,5 +1,7 @@
 // Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
+var common = require('./ManagedReference.common.js');
+
 exports.lastTransform = function (model) {
 
   if (model.isCollection) {
@@ -8,7 +10,7 @@ exports.lastTransform = function (model) {
 
   if (model.children) {
 
-    for (let i = 0; i < model.children.length; i++) {
+    for (var i = 0; i < model.children.length; i++) {
       var topChild = model.children[i];
 
       if (topChild.inMethod && topChild.children) {
@@ -16,7 +18,7 @@ exports.lastTransform = function (model) {
         var addedMethodNames = {};
         var uniqueMethodsInOrder = [];
 
-        for (let j = 0; j < topChild.children.length; j++) {
+        for (var j = 0; j < topChild.children.length; j++) {
           var lowerChild = topChild.children[j];
 
           var methodNameWithParams = lowerChild.name[0].value;
@@ -41,17 +43,43 @@ exports.lastTransform = function (model) {
         }
 
         topChild.children = uniqueMethodsInOrder;
-
       }
-
     }
-
-
-
-
   }
 
+  //        model[getTypePropertyName(model.type)] = true;
+  
+  if(model.inheritedMembers) {
+    var memberTypes = {};
+    for (var i = 0; i < model.inheritedMembers.length; i++) {
+      var member = model.inheritedMembers[i];
+      if (!memberTypes.hasOwnProperty(member.type)) {
+        var m = {
+          "type" : member.type,
+          "children" : [],
+        };
+
+        m[common.getTypePropertyName(member.type)] = true;
+        
+        memberTypes[member.type] = m;
+      }
+
+      memberTypes[member.type].children.push(member);
+    }
+    
+    model.inheritedMembers = [];
+    for(var key in memberTypes) {
+      model.inheritedMembers.push(memberTypes[key]);
+    }
+
+  }
+  
   return model;
+}
+
+function CreateShortNamesForArray() {
+  
+  
 }
 
 function FindNameOnly(methodNameWithParams) {
